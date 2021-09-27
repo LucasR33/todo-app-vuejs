@@ -20,7 +20,33 @@
                 
                 <h3>To-do List</h3>
                 
-               
+                <div class="all-todos">
+                    <template
+                        v-if="todos != null"
+                    >
+                        <div class="single-todo"
+                            v-for="todo in todos"
+                            :class="{done: todo.done}"
+                            @click="doneTodo(todo)"                            
+                        >
+                            <p>{{ todo.text }}</p>
+                        </div>
+                    </template>
+                </div>
+
+                <button class="clear" @click="clearTodo()">Clear All</button>
+
+                <input type="text" placeholder="Add new to-do" v-model="newTodo.text">
+                <button class="add" @click="addTodo()">Add</button>
+
+                <div class="instructions">
+                    Instructions:
+                    <ul>
+                        <li>Click the to-do text to toggle between done / undone</li>
+                        <li>Use clear all button to remove all items</li>
+                        <li>Use the input field to add new to-dos</li>
+                    </ul>
+                </div>
             </section>
 
         </main>
